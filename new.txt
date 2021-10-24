@@ -1,1 +1,6 @@
 This is new file created in feature-1 branch -feature
+It 
+is 
+a 
+modefied 
+file
