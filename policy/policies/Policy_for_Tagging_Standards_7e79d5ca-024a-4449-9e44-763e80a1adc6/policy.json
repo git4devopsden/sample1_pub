@@ -1,0 +1,116 @@
+{
+ "properties": {
+  "displayName": "Policy for Tagging Standards",
+  "policyType": "Custom",
+  "mode": "All",
+  "metadata": {
+   "category": "Tags",
+   "createdBy": "06442075-2aa5-448e-963a-0f1753241a21",
+   "createdOn": "2021-12-08T12:11:11.0935376Z",
+   "updatedBy": "06442075-2aa5-448e-963a-0f1753241a21",
+   "updatedOn": "2021-12-08T13:33:39.5070684Z"
+  },
+  "parameters": {
+   "Environment": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Environment",
+     "description": "Name of the 'environment'"
+    }
+   },
+   "Name": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Name",
+     "description": "User friendly name for item in lowercase"
+    }
+   },
+   "CloudService": {
+    "type": "String",
+    "metadata": {
+     "displayName": "CloudService",
+     "description": "CloudService"
+    }
+   },
+   "CreatedBy": {
+    "type": "String",
+    "metadata": {
+     "displayName": "CreatedBy",
+     "description": "CreatedBy"
+    }
+   },
+   "Dud": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Dud",
+     "description": "Dud"
+    }
+   },
+   "allowedEnvironment": {
+    "type": "Array",
+    "metadata": {
+     "displayName": "Allowed Environment",
+     "description": "The list of allowed Environments"
+    },
+    "allowedValues": [
+     "nonprod",
+     "admin",
+     "prod",
+     "prodpci",
+     "dev"
+    ],
+    "defaultValue": [
+     "nonprod",
+     "admin",
+     "prod",
+     "prodpci",
+     "dev"
+    ]
+   }
+  },
+  "policyRule": {
+   "if": {
+    "anyOf": [
+     {
+      "field": "[concat('tags[', parameters('Environment'), ']')]",
+      "exists": false
+     },
+     {
+      "field": "[concat('tags[', parameters('Name'), ']')]",
+      "exists": false
+     },
+     {
+      "field": "[concat('tags[', parameters('Dud'), ']')]",
+      "exists": false
+     },
+     {
+      "field": "[concat('tags[', parameters('Environment'), ']')]",
+      "notIn": "[parameters('allowedEnvironment')]"
+     },
+     {
+      "field": "[concat('tags[', parameters('Name'), ']')]",
+      "notMatch": "[toLower(field(concat('tags[', parameters('Name'), ']')))]"
+     },
+     {
+      "value": "[length(field(concat('tags[', parameters('Dud'), ']')))]",
+      "notEquals": 11
+     },
+     {
+      "field": "[concat('tags[', parameters('CreatedBy'), ']')]",
+      "exists": false
+     },
+     {
+      "field": "[concat('tags[', parameters('CloudService'), ']')]",
+      "exists": false
+     }
+    ]
+   },
+   "then": {
+    "effect": "deny"
+   }
+  }
+ },
+ "id": "/subscriptions/0447b977-c67d-4b84-b069-172c3809719e/providers/Microsoft.Authorization/policyDefinitions/7e79d5ca-024a-4449-9e44-763e80a1adc6",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "7e79d5ca-024a-4449-9e44-763e80a1adc6"
+}

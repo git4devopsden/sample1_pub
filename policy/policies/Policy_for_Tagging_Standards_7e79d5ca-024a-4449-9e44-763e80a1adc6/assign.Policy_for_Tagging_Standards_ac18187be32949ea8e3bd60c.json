@@ -1,0 +1,41 @@
+{
+ "sku": {
+  "name": "A0",
+  "tier": "Free"
+ },
+ "properties": {
+  "displayName": "Policy for Tagging Standards",
+  "policyDefinitionId": "/subscriptions/0447b977-c67d-4b84-b069-172c3809719e/providers/Microsoft.Authorization/policyDefinitions/7e79d5ca-024a-4449-9e44-763e80a1adc6",
+  "scope": "/subscriptions/0447b977-c67d-4b84-b069-172c3809719e",
+  "notScopes": [],
+  "parameters": {
+   "Environment": {
+    "value": "environment"
+   },
+   "Name": {
+    "value": "Name"
+   },
+   "CloudService": {
+    "value": "cloudservice"
+   },
+   "CreatedBy": {
+    "value": "createdby"
+   },
+   "Dud": {
+    "value": "dud"
+   }
+  },
+  "metadata": {
+   "assignedBy": "Sri Kanth Reddy",
+   "parameterScopes": {},
+   "createdBy": "06442075-2aa5-448e-963a-0f1753241a21",
+   "createdOn": "2021-12-09T05:38:01.2650494Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "enforcementMode": "Default"
+ },
+ "id": "/subscriptions/0447b977-c67d-4b84-b069-172c3809719e/providers/Microsoft.Authorization/policyAssignments/ac18187be32949ea8e3bd60c",
+ "type": "Microsoft.Authorization/policyAssignments",
+ "name": "ac18187be32949ea8e3bd60c"
+}
